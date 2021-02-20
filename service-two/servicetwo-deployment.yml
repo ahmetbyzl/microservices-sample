@@ -1,0 +1,41 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: service-two
+  labels:
+    app: service-two
+spec:
+  revisionHistoryLimit: 1
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-two
+  strategy:
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: service-two
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: service-two
+        image: gcr.io/concrete-crow-297015/service-two:latest
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "docker"
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "500Mi"
+          limits:
+            memory: "500Mi"
+        ports:
+        - containerPort: 8084
+          name: http
+      imagePullSecrets:
+        - name: storecheckersecretlatest

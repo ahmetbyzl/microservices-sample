@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: service-two
+  name: service-two
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-two
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: service-two
+    spec:
+      containers:
+      - image: servicetwo
+        name: servicetwo
+        resources: {}
+status: {}

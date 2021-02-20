@@ -69,7 +69,7 @@ spring:
     loadbalancer.ribbon.enabled: false
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://service-two-db/service-two?createDatabaseIfNotExist=true
+    url: jdbc:mysql://service-two-db.webapp1.svc.cluster.local/service-two?createDatabaseIfNotExist=true
     username: service-two
     password: service-two
   jpa:

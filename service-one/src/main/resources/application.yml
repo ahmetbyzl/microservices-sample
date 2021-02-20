@@ -33,7 +33,7 @@ spring:
     - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
     - org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
   cloud.consul.enabled: false
-  data.mongodb.uri: mongodb://localhost:27017/service-one
+  data.mongodb.uri: mongodb://service-onedb-mongo.webapp1.svc.cluster.local:27017/service-one
 logging:
   level:
     org.springframework.web: DEBUG
@@ -56,7 +56,7 @@ spring:
         healthCheckPath: ${management.contextPath}/health
         healthCheckInterval: 15s
   data:
-    mongodb.uri: mongodb://service-one-db/service-one
+          mongodb.uri: mongodb://service-onedb-mongo.webapp1.svc.cluster.local:27017/service-one
   rabbitmq:
     host: rabbit
     port: 5672
