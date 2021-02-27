@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+ name: api-gateway-ing
+ namespace: webapp1
+spec:
+ rules:
+ - host: api-gateway.webapp1.svc.cluster.local
+   http:
+     paths:
+       - path: /service-two
+         backend:
+           serviceName: api-gateway
+           servicePort: 80

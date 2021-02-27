@@ -59,17 +59,17 @@ spring:
     - org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration
   cloud:
     consul:
-      host: consul
+      host: consul.webapp1.svc.cluster.local
       port: 8500
       discovery:
-        hostName: service-two
+        hostName: service-two.webapp1.svc.cluster.local
         instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
         healthCheckPath: ${management.contextPath}/health
         healthCheckInterval: 15s
     loadbalancer.ribbon.enabled: false
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://service-two-db.webapp1.svc.cluster.local/service-two?createDatabaseIfNotExist=true
+    url: jdbc:mysql://service-two-db.webapp1.svc.cluster.local:3310/service-two?createDatabaseIfNotExist=true
     username: service-two
     password: service-two
   jpa:
@@ -79,7 +79,7 @@ spring:
     properties.hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     show-sql: true
   rabbitmq:
-    host: rabbit
+    host: rabbit-mq.webapp1.svc.cluster.local
     port: 5672
     username: mudigal
     password: mudigal
